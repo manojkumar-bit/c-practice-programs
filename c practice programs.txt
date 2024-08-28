@@ -1,0 +1,73 @@
+merge 2 arrays in descending order
+
+#include<stdio.h>
+void main()
+{
+    int a[100],b[100],c[100],i,j,k,n1,n2,n3;
+    printf("enter the no. of elements\n");
+    scanf("%d",&n1);
+    printf("enter the ele of 1st array\n");
+    for(i=0;i<n1;i++)
+    scanf("%d",&a[i]);
+    printf("enter the no. of elements\n");
+    scanf("%d",&n2);
+    printf("enter the ele of 2nd array\n");
+    for(i=0;i<n2;i++)
+    scanf("%d",&b[i]);
+    n3=n1+n2;
+    for(i=0;i<n1;i++)
+    c[i]=a[i];
+    for(j=0;j<n2;j++)
+    {
+    c[i]=b[j];
+    i++;
+    }
+    for(i=0;i<n3;i++)
+    {
+        for(k=0;k<n3-1;k++)
+        {
+            if(c[k]<=c[k+1])
+            {
+            j=c[k+1];
+            c[k+1]=c[k];
+            c[k]=j;
+        }
+    }
+    }
+for(i=0;i<n3;i++)
+printf("%d\n",c[i]);
+}
+
+leetcode:
+
+1) remove an element
+
+int removeElement(int* nums, int numsSize, int val) {
+    int n=0;
+    for(int i=0;i<numsSize;++i)
+    {
+        if(nums[i]!=val){
+            nums[n]=nums[i];
+            ++n;
+        }
+    }
+    return n;
+}
+
+2)remove duplicate elements from array
+
+int removeDuplicates(int* nums, int numsSize) {
+    if(numsSize==0){
+    return 0;
+    }
+    int n=1;
+    for(int i=1;i<numsSize;++i)
+    {
+        if(nums[i]!=nums[i-1])
+        {
+            nums[n]=nums[i];
+            ++n;
+        }
+    }
+    return n;
+}
